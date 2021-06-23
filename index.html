@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat WebApp</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        var name=prompt("Please enter your name.");
+    </script>
+
+</head>
+<body>
+
+    
+    <div class="title">
+
+        <h1 class="titleText" style="font-family: cursive; text-align: center;">Chat WebApp</h1>
+
+    </div>
+
+
+    <div class="textField" id="messageWindow">
+
+        <!-- <div class="sender" id="messageSend">
+            <h8 id="sendText"></h8>
+        </div> -->
+
+        <!-- <div class="reciever" id="messageRecieved">
+            <h8></h8>
+        </div> -->
+
+    </div>
+
+    <form action="" id="form">
+
+        <div class="inputField">
+            <!-- <input class="form-control form-control-lg inputText" id="input" type="text" placeholder="Write Message....">
+            <button type="button" class="btn btn-primary">Send</button> -->
+            <input id="input" class="form-control form-control-lg inputText" autocomplete="off" /><button class="btn btn-primary">Send</button>
+
+        </div>
+        
+        
+    </form>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <!-- below is the client side script -->
+    <script>
+        var socket=io();
+
+        var form = document.getElementById('form');
+        var input = document.getElementById('input');
+
+        form.addEventListener('submit',function(e){
+            e.preventDefault();
+
+            if(input.value)
+            {
+                socket.emit('chat message',name,input.value); // this 'chat message' is also used as an argument at server side in order to connect client input to server
+                
+                // displaying message on the sender screen
+                var newSend=document.createElement('div');
+                newSend.setAttribute("class","sender");
+                var text=document.createTextNode(name + ": " +input.value);
+                if(text)
+                {
+                    newSend.appendChild(text);
+                }
+                messageWindow.appendChild(newSend);
+
+                input.value='';
+
+                
+            }
+        });
+        
+
+        socket.on('chat message',function(name,msg){
+                var newrecieve=document.createElement('div');
+                newrecieve.setAttribute("class","reciever");
+                var text=document.createTextNode(name+": "+msg);
+                if(text)
+                {
+                    newrecieve.appendChild(text);
+                }
+                messageWindow.appendChild(newrecieve);
+        });
+
+    </script>
+
+</body>
+</html>
+
