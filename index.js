@@ -8,20 +8,24 @@ const io=new Server(server);
 
 
 app.get('/',(req,res)=>{
-    res.sendFile(__dirname+'\\index.html');
+    // res.sendFile(__dirname+'\\index.html');
     // console.log(__dirname+'\\index.html');
+    res.sendFile(__dirname+'/index.html');
 });
 
 // for sending external css, we need to sendFile on request
 app.get('/style.css',(req,res)=>{
-    res.sendFile(__dirname+'\\style.css');
+    // res.sendFile(__dirname+'\\style.css');
     // console.log(__dirname+'\\style.css');
+
+    res.sendFile(__dirname+'/style.css');
 });
 
 // similarly, we also have to send the local images like we did for css
 app.get('/images/fieldbg1.jpg',(req,res)=>{
-    res.sendFile(__dirname+'\\images\\fieldbg1.jpg');
+    // res.sendFile(__dirname+'\\images\\fieldbg1.jpg');
     // console.log(__dirname+'\\images\\fieldbg1.jpg');
+    res.sendFile(__dirname+'/images/fieldbg1.jpg');
 });
 
 io.on('connection',(socket)=>{
