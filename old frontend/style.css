@@ -1,0 +1,52 @@
+.title {
+  background-color: #cdf0ea;
+  margin-bottom: 50px;
+  border: white solid;
+}
+
+.body {
+  background-color: #f9f9f9;
+}
+
+.textField {
+  background-image: url("images/fieldbg1.jpg");
+  border: solid white;
+  overflow-y: scroll;
+  margin: 50px 50px 10px;
+  height: 500px;
+  padding: 50px;
+}
+
+.sender {
+  border: white solid;
+  width: 30%;
+  padding: 10px;
+  border-radius: 5px;
+  float: right;
+  clear: both;
+  margin-bottom: 10px;
+  font-family: cursive;
+  background-color: thistle;
+  font-size: large;
+}
+
+.reciever {
+  border: white solid;
+  width: 30%;
+  padding: 10px;
+  border-radius: 5px;
+  float: left;
+  clear: both;
+  margin-bottom: 10px;
+  font-family: cursive;
+  background-color: thistle;
+  font-size: large;
+}
+
+.inputField {
+  margin: 0px 50px;
+}
+
+.inputText {
+  margin-bottom: 10px;
+}

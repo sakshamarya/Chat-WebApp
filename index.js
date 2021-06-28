@@ -29,11 +29,18 @@ app.get('/images/fieldbg1.jpg',(req,res)=>{
 });
 
 io.on('connection',(socket)=>{
-    console.log('a user is connected');
+    console.log( ' user is connected');
+
+    
+
     socket.on('disconnect', () => {
         console.log('user disconnected');
     });
 
+    socket.on('user list',(name)=>{
+        console.log(name+': Joined');
+        io.emit('user list',name); // this will broadcast msg only to other users and not the one who is sending.
+    });
 
     socket.on('chat message',(name,msg)=>{
         console.log(name+': '+msg);

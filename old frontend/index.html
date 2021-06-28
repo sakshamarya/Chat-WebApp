@@ -5,50 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat WebApp</title>
-
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 
-
     <script>
-        var name=prompt("Enter your name");
+        var name=prompt("Please enter your name.");
     </script>
+
 </head>
 <body>
 
-            <!-- <div class="box background">
+    
+    <div class="title">
 
-            <div class="bgUpper"></div>
-            <div class="bgLower"></div>
+        <h1 class="titleText" style="font-family: cursive; text-align: center;">Chat WebApp</h1>
+
+    </div>
+
+
+    <div class="textField" id="messageWindow">
+
+        <!-- <div class="sender" id="messageSend">
+            <h8 id="sendText"></h8>
         </div> -->
-    
-        <div class="box main">
-    
-            <div class="userList">
-                <div class="topBar">User List</div>
-                <div class="nameList" id="list">
-    
-                </div>
-            </div>
-    
-            <div class="textField">
-                <div class="topBar">Chat Room</div>
-    
-                <div id="messageWindow"></div>
-    
-                <form action="" id="form">
-    
-                    <div class="inputField">
-                       
-                        <input id="input" class="form-control form-control-lg inputText" autocomplete="off" /><button class="btn btn-primary sendBtn">Send</button>
-            
-                    </div>
-                    
-                    
-                </form>
-    
-            </div>
-        </div>
 
+        <!-- <div class="reciever" id="messageRecieved">
+            <h8></h8>
+        </div> -->
+
+    </div>
+
+    <form action="" id="form">
+
+        <div class="inputField">
+            <!-- <input class="form-control form-control-lg inputText" id="input" type="text" placeholder="Write Message....">
+            <button type="button" class="btn btn-primary">Send</button> -->
+            <input id="input" class="form-control form-control-lg inputText" autocomplete="off" /><button class="btn btn-primary">Send</button>
+
+        </div>
+        
+        
+    </form>
 
     <script src="/socket.io/socket.io.js"></script>
 
@@ -60,28 +58,9 @@
         function updateScroll(){
         var element = document.getElementById("messageWindow");
         element.scrollTop = element.scrollHeight;
-        }
-
-        
-        
+    }
 
         var socket=io();
-
-        socket.emit('user list',name);
-
-        socket.on('user list',function(name){
-            // adding user to user list
-            var newUser=document.createElement('div');
-            newUser.setAttribute("class","user");
-            var text=document.createTextNode("New User: " +name+" has joined");
-            if(text)
-            {
-                newUser.appendChild(text);
-            }
-            list.appendChild(newUser);
-            updateScroll();
-        });
-
 
         var form = document.getElementById('form');
         var input = document.getElementById('input');
@@ -124,6 +103,7 @@
         });
 
     </script>
-    
+
 </body>
 </html>
+
